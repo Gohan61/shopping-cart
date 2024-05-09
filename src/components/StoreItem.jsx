@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function StoreItem({ props, addToCart, cartItem }) {
+  const [amount, setAmount] = useState(0);
+
   return (
     <div className="item">
       <h4>{props.title}</h4>
@@ -9,10 +12,18 @@ function StoreItem({ props, addToCart, cartItem }) {
       <img src={props.image} alt="" />
       <div className="amountItem">
         <label htmlFor={props.id}>Amount</label>
-        <input type="number" id={props.id} />
+        <input
+          type="number"
+          id={props.id}
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
         <button
           className="addToCart"
-          onClick={() => AddToCart({ props, addToCart, cartItem })}
+          onClick={() => {
+            AddToCart({ props, addToCart, cartItem, amount });
+            setAmount(0);
+          }}
         >
           Add to cart
         </button>
@@ -21,10 +32,10 @@ function StoreItem({ props, addToCart, cartItem }) {
   );
 }
 
-function AddToCart({ addToCart, cartItem, props }) {
+function AddToCart({ addToCart, cartItem, props, amount }) {
   addToCart({
     ...cartItem,
-    [props.id]: { title: props.title, price: props.price },
+    [props.id]: { title: props.title, price: props.price, items: amount },
   });
 }
 
