@@ -33,9 +33,17 @@ function StoreItem({ props, addToCart, cartItem }) {
 }
 
 function AddToCart({ addToCart, cartItem, props, amount }) {
+  let currentAmount = 0;
+  if (cartItem[props.id]) {
+    currentAmount = cartItem[props.id].items;
+  }
   addToCart({
     ...cartItem,
-    [props.id]: { title: props.title, price: props.price, items: amount },
+    [props.id]: {
+      title: props.title,
+      price: props.price,
+      items: Number(amount) + Number(currentAmount),
+    },
   });
 }
 
