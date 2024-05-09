@@ -21,7 +21,11 @@ export default function NavBar({ cartItem }) {
             </li>
             <li>
               <Link to={"shopcart"}>
-                Shopping cart ({totalAmount.reduce((a, b) => a + b)})
+                Shopping cart (
+                {totalAmount.length === 0
+                  ? 0
+                  : totalAmount.reduce((a, b) => a + b)}
+                )
               </Link>
             </li>
           </>
