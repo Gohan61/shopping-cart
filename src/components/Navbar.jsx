@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart";
 
-export default function NavBar() {
+export default function NavBar({ cartItem }) {
   const [currentPage, setCurrentPage] = useState("homepage");
   return (
     <>
@@ -14,7 +14,7 @@ export default function NavBar() {
               <Link to={"homepage"} onClick={() => setCurrentPage("homepage")}>
                 Home page
               </Link>
-              <ShoppingCart />
+              <ShoppingCart cartItem={cartItem} />
             </>
           ) : (
             <Link to={"shoppage"} onClick={() => setCurrentPage("shoppage")}>

@@ -6,7 +6,7 @@ export default function App() {
   const [cartItem, addToCart] = useState({});
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar cartItem={cartItem}></NavBar>
       <Outlet context={[cartItem, addToCart]}></Outlet>
     </>
   );
