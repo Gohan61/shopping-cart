@@ -40,7 +40,22 @@ function AddToCart({ addToCart, cartItem, props, amount }) {
 }
 
 StoreItem.propTypes = {
-  props: PropTypes.object,
+  props: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      price: PropTypes.number,
+      description: PropTypes.string,
+      image: PropTypes.any,
+      id: PropTypes.number,
+      category: PropTypes.string,
+      rating: PropTypes.objectOf(
+        PropTypes.shape({
+          rate: PropTypes.number,
+          count: PropTypes.number,
+        })
+      ),
+    })
+  ),
   addToCart: PropTypes.func,
   cartItem: PropTypes.object,
 };
