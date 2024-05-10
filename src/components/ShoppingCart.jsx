@@ -78,6 +78,7 @@ function CartItem({ id, value, addToCart, cartItem }) {
             <input
               type="number"
               value={amount}
+              min={0}
               onChange={(e) => setAmount(e.target.value)}
             />
             <button
