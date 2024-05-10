@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StoreItem from "./StoreItem";
 import { useOutletContext } from "react-router-dom";
+import "../styles/ShopPage.css";
 
 export default function ShopPage() {
   const [product, setProduct] = useState([]);

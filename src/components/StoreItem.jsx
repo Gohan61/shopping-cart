@@ -7,8 +7,8 @@ function StoreItem({ props, addToCart, cartItem }) {
   return (
     <div className="item">
       <h4>{props.title}</h4>
-      <p>{props.price}</p>
-      <p>{props.description}</p>
+      <p className="itemPrice">€ {props.price}</p>
+      <p className="itemDescription">{props.description}</p>
       <img src={props.image} alt="" />
       <div className="amountItem">
         <label htmlFor={props.id}>Amount</label>
@@ -48,22 +48,18 @@ function AddToCart({ addToCart, cartItem, props, amount }) {
 }
 
 StoreItem.propTypes = {
-  props: PropTypes.objectOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      price: PropTypes.number,
-      description: PropTypes.string,
-      image: PropTypes.any,
-      id: PropTypes.number,
-      category: PropTypes.string,
-      rating: PropTypes.objectOf(
-        PropTypes.shape({
-          rate: PropTypes.number,
-          count: PropTypes.number,
-        })
-      ),
-    })
-  ),
+  props: PropTypes.shape({
+    title: PropTypes.string,
+    price: PropTypes.number,
+    description: PropTypes.string,
+    image: PropTypes.any,
+    id: PropTypes.number,
+    category: PropTypes.string,
+    rating: PropTypes.shape({
+      rate: PropTypes.number,
+      count: PropTypes.number,
+    }),
+  }),
   addToCart: PropTypes.func,
   cartItem: PropTypes.object,
 };
