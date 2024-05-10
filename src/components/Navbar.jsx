@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ShoppingCart from "./ShoppingCart";
+import "../styles/NavBar.css";
 
 export default function NavBar({ cartItem }) {
   let totalAmount = Object.entries(cartItem).map(([id, value]) => {
@@ -9,8 +9,7 @@ export default function NavBar({ cartItem }) {
 
   return (
     <>
-      <nav>
-        <h3>Navigation</h3>
+      <nav className="navBar">
         <ul>
           <>
             <li>
