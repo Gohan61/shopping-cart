@@ -64,13 +64,4 @@ StoreItem.propTypes = {
   cartItem: PropTypes.object,
 };
 
-// StoreItem.propTypes = {
-//   props: PropTypes.shape({
-//     title: PropTypes.string,
-//     price: PropTypes.number,
-//     description: PropTypes.string,
-//     image: PropTypes.any,
-//   }),
-// };
-
 export default StoreItem;
