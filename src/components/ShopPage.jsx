@@ -46,6 +46,26 @@ export default function ShopPage() {
           addToCart={addToCart}
           cartItem={cartItem}
         ></StoreItem>
+        <StoreItem
+          props={product[3]}
+          addToCart={addToCart}
+          cartItem={cartItem}
+        ></StoreItem>
+        <StoreItem
+          props={product[4]}
+          addToCart={addToCart}
+          cartItem={cartItem}
+        ></StoreItem>
+        <StoreItem
+          props={product[5]}
+          addToCart={addToCart}
+          cartItem={cartItem}
+        ></StoreItem>
+        <StoreItem
+          props={product[6]}
+          addToCart={addToCart}
+          cartItem={cartItem}
+        ></StoreItem>
       </div>
     </>
   );
