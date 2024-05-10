@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: auto;
   width: min(80vw, 1000px);
+  gap: 20px;
 }
 
 .shoppingCartItem {
