@@ -10,7 +10,7 @@ export default function ShoppingCart() {
   } else
     return (
       <>
-        <h3>Items in your shopping cart</h3>
+        <h1>Items in your shopping cart</h1>
         <div className="shoppingCart">
           {Object.entries(cartItem).map(([id, value]) => {
             return (
@@ -49,7 +49,7 @@ function CartItem({ id, value, addToCart, cartItem }) {
 
   return (
     <div className="shoppingCartItem" key={id}>
-      <h4>{value.title}</h4>
+      <h2>{value.title}</h2>
 
       <p>
         <span>Price </span>
