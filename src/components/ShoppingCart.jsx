@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import "../styles/ShoppingCart.css";
+import { PropTypes } from "prop-types";
 
 export default function ShoppingCart() {
   const [cartItem, addToCart] = useOutletContext();
@@ -95,3 +97,10 @@ function CartItem({ id, value, addToCart, cartItem }) {
     </div>
   );
 }
+
+CartItem.propTypes = {
+  id: PropTypes.number,
+  value: PropTypes.object,
+  addToCart: PropTypes.func,
+  cartItem: PropTypes.object,
+};
