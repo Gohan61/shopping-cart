@@ -1,0 +1,13 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60vw;
+}
+
+.homePage p {
+  max-width: 550px;
+  font-size: 1.3em;
+  line-height: 2;
+  font-style: italic;
+}
