@@ -1,0 +1,58 @@
+.shoppingCart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  width: min(80vw, 1000px);
+}
+
+.shoppingCartItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 1px 3px rgb(0, 0, 102);
+}
+
+.shoppingCartItem h2 {
+  font-size: 1.3em;
+}
+
+.cartItemPrice {
+  font-size: 1.2em;
+  color: red;
+}
+
+.cartItemAmount {
+  font-size: 1.1em;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cartItemAmountSpan {
+  padding: 4px;
+  background-color: bisque;
+}
+
+.shoppingCartItem input {
+  width: 80px;
+}
+
+.shoppingCartItem button,
+.totalPrice button {
+  background-color: antiquewhite;
+  font-weight: bold;
+}
+
+.totalPrice {
+  font-size: 1.4em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: red;
+}
+
+.totalPrice span {
+  color: black;
+}

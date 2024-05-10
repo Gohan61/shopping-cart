@@ -26,8 +26,8 @@ export default function ShoppingCart() {
               </>
             );
           })}
-          <p>
-            <span>Total price: </span> {totalCurrent}
+          <p className="totalPrice">
+            <span>Total price: </span>€ {totalCurrent}
             <button
               onClick={() =>
                 setTotalCurrent(
@@ -53,14 +53,13 @@ function CartItem({ id, value, addToCart, cartItem }) {
     <div className="shoppingCartItem" key={id}>
       <h2>{value.title}</h2>
 
-      <p>
-        <span>Price </span>
-        {value.price * Number(value.items)}
+      <p className="cartItemPrice">
+        <span>Price </span>€ {value.price * Number(value.items)}
       </p>
 
       {!editState ? (
-        <p>
-          <span>Amount </span>
+        <p className="cartItemAmount">
+          <span className="cartItemAmountSpan">Amount </span>
           {value.items}
           <button
             onClick={() => {
@@ -74,24 +73,26 @@ function CartItem({ id, value, addToCart, cartItem }) {
         </p>
       ) : (
         <>
-          <span>Amount </span>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <button
-            onClick={() => {
-              addToCart({
-                ...cartItem,
-                [id]: { ...cartItem[id], items: amount },
-              });
-              setEditState(false);
-            }}
-            key={id}
-          >
-            Submit
-          </button>
+          <p className="cartItemAmount">
+            <span className="cartItemAmountSpan">Amount </span>
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <button
+              onClick={() => {
+                addToCart({
+                  ...cartItem,
+                  [id]: { ...cartItem[id], items: amount },
+                });
+                setEditState(false);
+              }}
+              key={id}
+            >
+              Submit
+            </button>
+          </p>
         </>
       )}
     </div>
