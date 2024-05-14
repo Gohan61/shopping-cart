@@ -34,6 +34,7 @@ export default function ShoppingCart() {
                   Object.entries(cartItem)
                     .map(([id, value]) => value.price * Number(value.items))
                     .reduce((a, b) => a + b)
+                    .toFixed(2)
                 )
               }
             >
