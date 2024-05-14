@@ -8,8 +8,10 @@ function StoreItem({ props, addToCart, cartItem }) {
     <div className="item">
       <h4>{props.title}</h4>
       <p className="itemPrice">€ {props.price}</p>
-      <p className="itemDescription">{props.description}</p>
-      <img src={props.image} alt="" />
+      <div className="descImageShop">
+        <img src={props.image} alt="" />
+        <p className="itemDescription">{props.description}</p>
+      </div>
       <div className="amountItem">
         <label htmlFor={props.id}>Amount</label>
         <input
