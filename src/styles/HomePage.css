@@ -1,13 +1,47 @@
 .homePage {
+  width: max(20vw, 1000px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60vw;
+  margin-top: 30px;
+}
+
+.homePage h2 {
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+.homePage h2,
+.homePage h3 {
+  width: fit-content;
+}
+
+.homePage h3 {
+  font-style: italic;
 }
 
 .homePage p {
-  max-width: 550px;
+  padding: 0;
+  margin: 0;
   font-size: 1.3em;
   line-height: 2;
   font-style: italic;
+}
+
+.homePage img {
+  float: right;
+  object-fit: contain;
+  width: 600px;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+
+.imageDesc {
+  width: 800px;
+  padding: 30px;
+  background: linear-gradient(
+    180deg,
+    rgb(79, 70, 229, 0.2),
+    rgb(79, 70, 229, 0.4)
+  );
 }
