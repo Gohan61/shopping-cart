@@ -9,27 +9,30 @@ export default function NavBar({ cartItem }) {
 
   return (
     <>
-      <nav className="navBar">
-        <ul>
-          <>
-            <li>
-              <Link to={"homepage"}>Home page</Link>
-            </li>
-            <li>
-              <Link to={"shoppage"}>Shop page</Link>
-            </li>
-            <li>
-              <Link to={"shopcart"}>
-                Shopping cart (
-                {totalAmount.length === 0
-                  ? 0
-                  : totalAmount.reduce((a, b) => a + b)}
-                )
-              </Link>
-            </li>
-          </>
-        </ul>
-      </nav>
+      <header>
+        <h1>The Random Store</h1>
+        <nav className="navBar">
+          <ul>
+            <>
+              <li>
+                <Link to={"homepage"}>Home page</Link>
+              </li>
+              <li>
+                <Link to={"shoppage"}>Shop page</Link>
+              </li>
+              <li>
+                <Link to={"shopcart"}>
+                  Shopping cart (
+                  {totalAmount.length === 0
+                    ? 0
+                    : totalAmount.reduce((a, b) => a + b)}
+                  )
+                </Link>
+              </li>
+            </>
+          </ul>
+        </nav>
+      </header>
     </>
   );
 }
