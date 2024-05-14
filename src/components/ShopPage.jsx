@@ -20,17 +20,18 @@ export default function ShopPage() {
       })
       .then((response) => {
         setProduct(response);
-        console.log(response);
       })
       .catch((error) => {
         setError(error);
-        console.log(error);
       })
       .finally(() => setLoading(false));
   }, [storeURL]);
 
   if (loading) {
     return <p>Loading</p>;
+  }
+  if (error) {
+    return <p>A network error was encountered with error code ${error}</p>;
   }
   return (
     <>
