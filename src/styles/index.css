@@ -4,6 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Ubuntu-font, Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: Ubuntu-font;
+  src: url(../assets/UbuntuSans-VariableFont.ttf);
 }
 
 body {
