@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { SingleProductType } from "../types/storeTypes";
+import { useDispatch } from "react-redux";
+import { addAmount, fetchProduct } from "../features/shoppingCart/cartSlice";
+import { AppDispatch } from "../app/store";
 
 export default function SingleProduct({ props }: { props: SingleProductType }) {
+  const [inputAmount, setInputAmount] = useState(0);
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className="item">
       <h4>{props.title}</h4>
@@ -14,16 +21,17 @@ export default function SingleProduct({ props }: { props: SingleProductType }) {
         <input
           type="number"
           id={props.id.toString()}
-          //   value={amount}
+          value={inputAmount}
           min={0}
-          //   onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => setInputAmount(Number(e.target.value))}
         />
         <button
           className="addToCart"
-          //   onClick={() => {
-          //     AddToCart({ props, addToCart, cartItem, amount });
-          //     setAmount(0);
-          //   }}
+          onClick={async () => {
+            dispatch(addAmount({ inputAmount, id: props.id }));
+            setInputAmount(0);
+            dispatch(fetchProduct({ id: props.id }));
+          }}
         >
           Add to cart
         </button>

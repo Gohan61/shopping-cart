@@ -18,7 +18,7 @@ export default function AllProducts() {
       {allProducts.loading ? <p>Loading</p> : ""}
       {allProducts.error ? <p>{allProducts.error}</p> : ""}
       {allProducts.products.map((item) => {
-        return <SingleProduct props={item} />;
+        return <SingleProduct props={item} key={item.id + "product"} />;
       })}
     </div>
   );
