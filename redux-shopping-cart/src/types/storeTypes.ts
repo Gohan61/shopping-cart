@@ -16,3 +16,8 @@ export type SingleProductType = {
 export type ApiProductType = SingleProductType[];
 
 export type ProductStateApi = { product: ProductState };
+
+export type cartStateApi = {
+  error: string | undefined;
+  [key: number]: { amount: number; totalPrice?: number; title?: string };
+};
