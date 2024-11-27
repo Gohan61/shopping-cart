@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { cartStateApi, SingleProductType } from "../../types/storeTypes";
 
-const initialState: cartStateApi = {
-  error: "",
-};
+const initialState: cartStateApi = {};
 
 export const fetchProduct = createAsyncThunk<SingleProductType, { id: number }>(
   "product/fetchProduct",
