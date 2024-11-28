@@ -21,5 +21,7 @@ export type CartStateType = { cart: cartStateApi };
 
 export type cartStateApi = {
   error?: string | undefined;
-  [key: number]: { amount: number; totalPrice?: number; title?: string };
+  [key: number]: { amount: number; totalPrice?: string; title?: string };
 };
+
+export type cartProduct = { amount: number; totalPrice: number; title: string };
