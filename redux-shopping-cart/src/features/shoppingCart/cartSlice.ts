@@ -24,14 +24,26 @@ const amountSlice = createSlice({
       state,
       action: { payload: { id: number; inputAmount: number } }
     ) => {
-      state[action.payload.id] = { amount: action.payload.inputAmount };
+      if (!state[action.payload.id]) {
+        state[action.payload.id] = { amount: 0 };
+      }
+      state[action.payload.id].amount += action.payload.inputAmount;
+    },
+    reduceAmount: (state, action) => {
+      state[action.payload.id].amount--;
+
+      if (state[action.payload.id].amount === 0) {
+        delete state[action.payload.id];
+      }
+    },
+    removeFromCart: (state, action) => {
+      delete state[action.payload.id];
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
       const id = action.payload.id;
       state[id].totalPrice = action.payload.price * state[id].amount;
-      state[id].title = action.payload.title;
     });
     builder.addCase(fetchProduct.rejected, (state, action) => {
       if (action.error.message) {
@@ -42,4 +54,4 @@ const amountSlice = createSlice({
 });
 
 export default amountSlice.reducer;
-export const { addAmount } = amountSlice.actions;
+export const { addAmount, reduceAmount, removeFromCart } = amountSlice.actions;
