@@ -1,5 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { cartStateApi, SingleProductType } from "../../types/storeTypes";
+import {
+  cartStateApi,
+  SingleProductType,
+  cartProduct,
+} from "../../types/storeTypes";
+
+const formatter = new Intl.NumberFormat("en-US", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
 const initialState: cartStateApi = {};
 
@@ -43,7 +52,11 @@ const amountSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
       const id = action.payload.id;
-      state[id].totalPrice = action.payload.price * state[id].amount;
+      state[id].totalPrice = formatter.format(
+        action.payload.price * state[id].amount
+      );
+
+      state[id].title = action.payload.title;
     });
     builder.addCase(fetchProduct.rejected, (state, action) => {
       if (action.error.message) {
@@ -52,6 +65,16 @@ const amountSlice = createSlice({
     });
   },
 });
+
+export const selectTotalCheckout = (state: cartStateApi) => {
+  let checkoutTotal: number = 0;
+  Object.keys(state).map((item: string) => {
+    if (item !== "totalCheckout") {
+      checkoutTotal += Number((state[Number(item)] as cartProduct).totalPrice);
+    }
+  });
+  return formatter.format(checkoutTotal);
+};
 
 export default amountSlice.reducer;
 export const { addAmount, reduceAmount, removeFromCart } = amountSlice.actions;
