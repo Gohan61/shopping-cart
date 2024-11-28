@@ -5,11 +5,13 @@ import {
   reduceAmount,
   fetchProduct,
   removeFromCart,
+  selectTotalCheckout,
 } from "../features/shoppingCart/cartSlice";
 import { AppDispatch } from "../app/store";
 
 export default function ShoppingCart() {
   const productsInCart = useSelector((state: CartStateType) => state.cart);
+  const totalCheckout = useSelector(() => selectTotalCheckout(productsInCart));
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -46,6 +48,10 @@ export default function ShoppingCart() {
           </div>
         );
       })}
+      <p>
+        <span>Total:</span>
+        {totalCheckout}
+      </p>
     </div>
   );
 }
