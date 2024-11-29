@@ -24,4 +24,12 @@ export type cartStateApi = {
   [key: number]: { amount: number; totalPrice?: string; title?: string };
 };
 
-export type cartProduct = { amount: number; totalPrice: number; title: string };
+export type cartProduct = { amount: number; totalPrice: string; title: string };
+
+export type pageState = {
+  currentPage: number;
+  itemsPerPage: number;
+  lastIndex: number;
+  firstIndex: number;
+  currentData: SingleProductType[];
+};
