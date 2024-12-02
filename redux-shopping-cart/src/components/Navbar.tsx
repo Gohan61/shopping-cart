@@ -12,8 +12,10 @@ import store from "../app/store";
 
 export default function Navbar({
   setSortProduct,
+  setShowHomePage,
 }: {
   setSortProduct: React.Dispatch<React.SetStateAction<string>>;
+  setShowHomePage: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [displayCart, setDisplayCart] = useState(false);
   const categories = useSelector(
@@ -29,6 +31,9 @@ export default function Navbar({
 
   return (
     <nav>
+      <h1>
+        <button onClick={() => setShowHomePage(true)}>Fake Store</button>
+      </h1>
       <button onClick={() => setDisplayCart(!displayCart)}>
         Shopping Cart
       </button>
@@ -54,6 +59,7 @@ export default function Navbar({
                   }
                 );
                 setSortProduct("asc");
+                setShowHomePage(false);
               }}
             >
               {category}
@@ -74,6 +80,7 @@ export default function Navbar({
             }
           });
           setSortProduct("asc");
+          setShowHomePage(false);
         }}
       >
         All products
