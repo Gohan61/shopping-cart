@@ -33,3 +33,12 @@ export type pageState = {
   firstIndex: number;
   currentData: SingleProductType[];
 };
+
+export type categoryState = {
+  loading: boolean;
+  categories: string[];
+  currentCategory: "";
+  error: string;
+};
+
+export type categoriesType = string[];
