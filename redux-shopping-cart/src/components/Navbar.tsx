@@ -1,13 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import ShoppingCart from "./ShoppingCart";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   fetchCategories,
   setCategory,
 } from "../features/categories/categorySlice";
+import { fetchSingleCategory } from "../features/products/productSlice";
 import { AppDispatch } from "../app/store";
+import { currentPage } from "../features/paginator/pageSlice";
+import store from "../app/store";
 
-export default function Navbar() {
+export default function Navbar({
+  setSortProduct,
+}: {
+  setSortProduct: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [displayCart, setDisplayCart] = useState(false);
   const categories = useSelector(
     (state: { category: { categories: string[] } }) => state.category.categories
@@ -30,12 +37,45 @@ export default function Navbar() {
         ? "Loading"
         : categories.map((category) => (
             <button
-              onClick={() => dispatch(setCategory({ category: category }))}
+              key={category}
+              onClick={() => {
+                dispatch(setCategory({ category: category }));
+                dispatch(fetchSingleCategory({ category: category })).then(
+                  (res) => {
+                    if (res.meta.requestStatus === "fulfilled") {
+                      const state = store.getState();
+                      dispatch(
+                        currentPage({
+                          currentPage: 1,
+                          products: state.product.products,
+                        })
+                      );
+                    }
+                  }
+                );
+                setSortProduct("asc");
+              }}
             >
               {category}
             </button>
           ))}
-      <button onClick={() => dispatch(setCategory({ category: "All" }))}>
+      <button
+        onClick={() => {
+          dispatch(setCategory({ category: "All" }));
+          dispatch(fetchSingleCategory({ category: "All" })).then((res) => {
+            if (res.meta.requestStatus === "fulfilled") {
+              const state = store.getState();
+              dispatch(
+                currentPage({
+                  currentPage: 1,
+                  products: state.product.products,
+                })
+              );
+            }
+          });
+          setSortProduct("asc");
+        }}
+      >
         All products
       </button>
     </nav>
