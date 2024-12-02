@@ -40,13 +40,15 @@ export default function AllProducts() {
           : currentData.map((item) => {
               return <SingleProduct props={item} key={item.id + "product"} />;
             })}
-      </div>
+        {!loading && (
       <Paginator
         props={{
           dataLength: allProducts.products.length,
           currentData: allProducts.products,
         }}
       ></Paginator>
+        )}
+      </div>
     </>
   );
 }
