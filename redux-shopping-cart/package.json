@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tailwind": "npx tailwindcss -i ./src/stylesheets/index.css -o ./src/stylesheets/output.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/stylesheet/index.css -o ./src/stylesheet/output.css --watch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
