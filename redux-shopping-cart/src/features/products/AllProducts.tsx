@@ -40,9 +40,10 @@ export default function AllProducts() {
           : currentData.map((item) => {
               return <SingleProduct props={item} key={item.id + "product"} />;
             })}
-        {!loading && (
+        {!productFetch.loading && (
       <Paginator
         props={{
+              loading: allProducts.loading,
           dataLength: allProducts.products.length,
           currentData: allProducts.products,
         }}
