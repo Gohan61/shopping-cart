@@ -15,6 +15,9 @@ export default function Paginator({
   const itemsPerPage = useSelector(
     (state: { page: { itemsPerPage: number } }) => state.page.itemsPerPage
   );
+  const currentPageNr = useSelector(
+    (state: { page: { currentPage: number } }) => state.page.currentPage
+  );
 
   function calculatePages() {
     const pages = Math.ceil(props.dataLength / itemsPerPage);
@@ -22,7 +25,6 @@ export default function Paginator({
     for (let i = 1; i <= pages; i++) {
       pagesArray.push(i);
     }
-    console.log(pagesArray);
 
     return pagesArray;
   }
@@ -36,10 +38,13 @@ export default function Paginator({
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex justify-center gap-2">
       {pageNumbers.map((page) => {
         return (
           <button
+            className={`text-lg border-2 p-1 border-gray-500 ${
+              page === currentPageNr ? "bg-green-950 text-white" : ""
+            }`}
             key={page}
             onClick={() =>
               dispatch(
