@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import ShoppingCart from "./ShoppingCart";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   fetchCategories,
   setCategory,
@@ -48,7 +48,7 @@ export default function Navbar({
   });
 
   return (
-    <nav className="w-full flex justify-around items-center border-b-2 shadow-sm">
+    <nav className="w-full flex justify-around items-center border-b-2 shadow-sm relative h-fit">
       <h1>
         <button
           onClick={() => setShowHomePage(true)}
