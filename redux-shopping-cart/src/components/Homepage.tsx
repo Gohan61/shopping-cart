@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <>
-      <main className="w-[300px] md:w-[450px] bg-white px-5 shadow-md pt-3 h-fit">
+      <main className="w-[300px] md:w-[450px] bg-white px-5 shadow-md pt-3 h-fit mt-2">
         <h1 className="text-center text-2xl font-bold mb-5">
           Welcome to the Fake Store
         </h1>

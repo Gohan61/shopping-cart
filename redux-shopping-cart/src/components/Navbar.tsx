@@ -30,61 +30,73 @@ export default function Navbar({
   }, []);
 
   return (
-    <nav>
+    <nav className="w-full flex justify-around items-center border-b-2 shadow-sm">
       <h1>
-        <button onClick={() => setShowHomePage(true)}>Fake Store</button>
+        <button
+          onClick={() => setShowHomePage(true)}
+          className="border-2 p-1 rounded bg-cyan-700 text-white font-bold text-xs md:text-base"
+        >
+          Fake Store
+        </button>
       </h1>
-      <button onClick={() => setDisplayCart(!displayCart)}>
+      <div className="flex justify-between gap-6 p-1 overflow-auto whitespace-nowrap ">
+        {loading
+          ? "Loading"
+          : categories.map((category) => (
+              <button
+                className="bg-cyan-800 rounded p-1 text-white font-bold text-xs md:text-base hover:bg-gray-700"
+                key={category}
+                onClick={() => {
+                  dispatch(setCategory({ category: category }));
+                  dispatch(fetchSingleCategory({ category: category })).then(
+                    (res) => {
+                      if (res.meta.requestStatus === "fulfilled") {
+                        const state = store.getState();
+                        dispatch(
+                          currentPage({
+                            currentPage: 1,
+                            products: state.product.products,
+                          })
+                        );
+                      }
+                    }
+                  );
+                  setSortProduct("asc");
+                  setShowHomePage(false);
+                }}
+              >
+                {category}
+              </button>
+            ))}
+        <button
+          className="bg-cyan-800 rounded p-1 text-white font-bold text-xs md:text-base hover:bg-gray-700"
+          onClick={() => {
+            dispatch(setCategory({ category: "All" }));
+            dispatch(fetchSingleCategory({ category: "All" })).then((res) => {
+              if (res.meta.requestStatus === "fulfilled") {
+                const state = store.getState();
+                dispatch(
+                  currentPage({
+                    currentPage: 1,
+                    products: state.product.products,
+                  })
+                );
+              }
+            });
+            setSortProduct("asc");
+            setShowHomePage(false);
+          }}
+        >
+          All products
+        </button>
+      </div>
+      <button
+        className="bg-red-800 text-white rounded p-1 font-bold text-xs md:text-base hover:bg-red-950"
+        onClick={() => setDisplayCart(!displayCart)}
+      >
         Shopping Cart
       </button>
       {displayCart ? <ShoppingCart></ShoppingCart> : ""}
-      {loading
-        ? "Loading"
-        : categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                dispatch(setCategory({ category: category }));
-                dispatch(fetchSingleCategory({ category: category })).then(
-                  (res) => {
-                    if (res.meta.requestStatus === "fulfilled") {
-                      const state = store.getState();
-                      dispatch(
-                        currentPage({
-                          currentPage: 1,
-                          products: state.product.products,
-                        })
-                      );
-                    }
-                  }
-                );
-                setSortProduct("asc");
-                setShowHomePage(false);
-              }}
-            >
-              {category}
-            </button>
-          ))}
-      <button
-        onClick={() => {
-          dispatch(setCategory({ category: "All" }));
-          dispatch(fetchSingleCategory({ category: "All" })).then((res) => {
-            if (res.meta.requestStatus === "fulfilled") {
-              const state = store.getState();
-              dispatch(
-                currentPage({
-                  currentPage: 1,
-                  products: state.product.products,
-                })
-              );
-            }
-          });
-          setSortProduct("asc");
-          setShowHomePage(false);
-        }}
-      >
-        All products
-      </button>
     </nav>
   );
 }
