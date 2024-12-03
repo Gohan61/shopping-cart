@@ -28,13 +28,19 @@ export default function ShoppingCart({
         const productId = Number(product);
         return (
           <div key={product}>
-            <h3>{productsInCart[productId].title}</h3>
-            <p>{productsInCart[productId].amount}</p>
-            <p>
-              <span>Price: </span>
+            <h3 className="font-semibold mb-2">
+              {productsInCart[productId].title}
+            </h3>
+            <p className="mb-1">
+              <span className="font-semibold">Amount: </span>
+              {productsInCart[productId].amount}
+            </p>
+            <p className="mb-1">
+              <span className="font-semibold">Price: </span>
               {productsInCart[productId].totalPrice}
             </p>
             <button
+              className="border-2 border-gray-500 bg-green-500 rounded w-6 text-white font-bold"
               onClick={() => {
                 dispatch(addAmount({ id: productId, inputAmount: 1 }));
                 dispatch(fetchProduct({ id: productId }));
@@ -43,6 +49,7 @@ export default function ShoppingCart({
               +
             </button>
             <button
+              className="border-2 border-gray-500 bg-red-500 rounded w-6 text-white font-bold ml-2"
               onClick={() => {
                 dispatch(reduceAmount({ id: productId }));
                 dispatch(fetchProduct({ id: productId }));
@@ -50,14 +57,17 @@ export default function ShoppingCart({
             >
               -
             </button>
-            <button onClick={() => dispatch(removeFromCart({ id: productId }))}>
+            <button
+              className="border-2 border-gray-500 bg-red-800 rounded ml-6 px-1 text-white font-bold"
+              onClick={() => dispatch(removeFromCart({ id: productId }))}
+            >
               Remove
             </button>
           </div>
         );
       })}
-      <p>
-        <span>Total:</span>
+      <p className="mt-2 mb-4 border-t-2">
+        <span className="font-semibold">Total: </span>
         {totalCheckout}
       </p>
     </div>
