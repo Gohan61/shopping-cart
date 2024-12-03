@@ -24,6 +24,7 @@ const pageSlice = createSlice({
       const firstIndex = (state.firstIndex = lastIndex - state.itemsPerPage);
       state.firstIndex = firstIndex;
       state.currentData = action.payload.products.slice(firstIndex, lastIndex);
+      state.currentPage = action.payload.currentPage;
     },
   },
 });
