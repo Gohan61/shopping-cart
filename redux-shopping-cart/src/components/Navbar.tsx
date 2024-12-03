@@ -18,6 +18,7 @@ export default function Navbar({
   setShowHomePage: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [displayCart, setDisplayCart] = useState(false);
+  const displayCartRef = useRef<HTMLDivElement>(null);
   const categories = useSelector(
     (state: { category: { categories: string[] } }) => state.category.categories
   );
@@ -28,6 +29,23 @@ export default function Navbar({
     dispatch(fetchCategories());
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (
+        displayCartRef.current &&
+        !displayCartRef.current.contains(event.target as Node)
+      ) {
+        setDisplayCart(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
 
   return (
     <nav className="w-full flex justify-around items-center border-b-2 shadow-sm">
@@ -96,7 +114,11 @@ export default function Navbar({
       >
         Shopping Cart
       </button>
-      {displayCart ? <ShoppingCart></ShoppingCart> : ""}
+      {displayCart ? (
+        <ShoppingCart displayCartRef={displayCartRef}></ShoppingCart>
+      ) : (
+        ""
+      )}
     </nav>
   );
 }
