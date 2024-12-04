@@ -964,10 +964,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:right-\[calc\(\(100vw-80rem\)\/2\)\] {
-    right: calc((100vw - 80rem) / 2);
-  }
-
   .lg\:top-12 {
     top: 3rem;
   }
@@ -985,18 +981,18 @@ video {
     padding-right: calc((100vw - 80rem) / 2);
   }
 
-  .lg\:pl-\[calc\(\(100vw-80rem\)\/2\)\] {
-    padding-left: calc((100vw - 80rem) / 2);
-  }
-
-  .lg\:pl-\[calc\(\(100vw-70rem\)\/2\)\] {
-    padding-left: calc((100vw - 70rem) / 2);
-  }
-
   .lg\:pl-\[calc\(\(100vw-90rem\)\/2\)\] {
     padding-left: calc((100vw - 90rem) / 2);
   }
+}
 
+@media (min-width: 1280px) {
+  .xl\:right-\[calc\(\(100vw-80rem\)\/2\)\] {
+    right: calc((100vw - 80rem) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
   .lg\:\[\&\>\*\:nth-child\(odd\)\]\:justify-self-end>*:nth-child(odd) {
     justify-self: end;
   }
