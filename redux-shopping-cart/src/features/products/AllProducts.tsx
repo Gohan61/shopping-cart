@@ -29,7 +29,6 @@ export default function AllProducts({
       state.page.currentData
   );
   const dispatch = useDispatch<AppDispatch>();
-  const [loading, setLoading] = useState(true);
 
   function selectSort(e: React.ChangeEvent<HTMLSelectElement>) {
     return e.target.value === "asc"
@@ -48,7 +47,6 @@ export default function AllProducts({
             currentPage({ currentPage: 1, products: state.product.products })
           );
         }
-        setLoading(false);
       });
     } else {
       dispatch(fetchSingleCategory({ category })).then((res) => {
@@ -58,7 +56,6 @@ export default function AllProducts({
             currentPage({ currentPage: 1, products: state.product.products })
           );
         }
-        setLoading(false);
       });
     }
   }
