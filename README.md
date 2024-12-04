@@ -4,7 +4,7 @@ This project is a revision of the [Shopping Cart project](https://github.com/Goh
 
 ## Video example
 
-You can take a look at the preview of this application on (YouTube)(<https://youtu.be/S40lVqBZTg4>)
+You can take a look at the preview of this application on [YouTube](https://youtu.be/S40lVqBZTg4)
 
 ## Run locally
 
