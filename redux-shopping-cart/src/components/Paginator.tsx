@@ -46,11 +46,12 @@ export default function Paginator({
               page === currentPageNr ? "bg-green-950 text-white" : ""
             }`}
             key={page}
-            onClick={() =>
+            onClick={() => {
               dispatch(
                 currentPage({ products: props.currentData, currentPage: page })
-              )
-            }
+              );
+              window.scrollTo(0, 0);
+            }}
           >
             {page}
           </button>
