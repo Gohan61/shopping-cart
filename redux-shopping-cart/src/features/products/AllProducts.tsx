@@ -66,24 +66,26 @@ export default function AllProducts({
   return (
     <>
       <div className="w-full flex flex-col p-1">
-        <h1 className="font-bold text-xl">
-          {productFetch.currentCategory} products
-        </h1>
-        <form action="">
-          <select
-            className="border-2 border-black rounded"
-            name="sort"
-            id="sort"
-            value={sortProduct}
-            onChange={(e) => selectSort(e)}
-          >
-            <option value="asc">asc</option>
-            <option value="desc">desc</option>
-          </select>
-        </form>
+        <div className="lg:pl-[calc((100vw-90rem)/2)]">
+          <h1 className="font-bold text-xl">
+            {productFetch.currentCategory} products
+          </h1>
+          <form action="">
+            <select
+              className="border-2 border-black rounded"
+              name="sort"
+              id="sort"
+              value={sortProduct}
+              onChange={(e) => selectSort(e)}
+            >
+              <option value="asc">asc</option>
+              <option value="desc">desc</option>
+            </select>
+          </form>
+        </div>
         {productFetch.loading ? <p>Loading</p> : ""}
         {productFetch.error ? <p>{productFetch.error}</p> : ""}
-        <div className="md:auto-rows-max grid grid-cols-[repeat(auto-fit, minmax(250px, 1fr))] justify-center lg:grid-cols-2">
+        <div className="md:auto-rows-max grid grid-cols-[repeat(auto-fit, minmax(250px, 1fr))] justify-center lg:grid-cols-2 lg:[&>*:nth-child(odd)]:justify-self-end lg:gap-10">
           {!productFetch.loading &&
             currentData.map((item) => {
               return <SingleProduct props={item} key={item.id + "product"} />;

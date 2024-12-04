@@ -48,7 +48,7 @@ export default function Navbar({
   });
 
   return (
-    <nav className="w-full flex justify-around items-center border-b-2 shadow-sm relative h-fit">
+    <nav className="w-full flex justify-around items-center border-b-2 shadow-sm relative h-fit lg:px-[calc((100vw-80rem)/2)]">
       <h1>
         <button
           onClick={() => setShowHomePage(true)}

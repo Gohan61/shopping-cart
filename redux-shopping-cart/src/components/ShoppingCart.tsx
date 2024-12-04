@@ -22,7 +22,7 @@ export default function ShoppingCart({
   return (
     <div
       ref={displayCartRef}
-      className="absolute p-2 bg-white w-52 right-2 top-11 border-2 md:top-16 lg:top-12  rounded border-double border-orange-500"
+      className="absolute p-2 bg-white w-52 right-2 top-11 border-2 md:top-16 lg:top-12 lg:right-[calc((100vw-80rem)/2)] rounded border-double border-orange-500"
     >
       {Object.keys(productsInCart).map((product: string) => {
         const productId = Number(product);
