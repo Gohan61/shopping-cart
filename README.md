@@ -2,6 +2,14 @@
 
 This project uses React to build a shopping cart. The items in the shop are retrieved via the [FakeStore API](https://fakestoreapi.com/). The project is tested with the React Testing Library.
 
+## Redux version
+
+Check out the [redux branch](https://github.com/Gohan61/shopping-cart/tree/redux) which uses Redux Toolkit to manage state and Tailwind CSS for styling.
+
+[Redux version demonstration video](https://youtu.be/S40lVqBZTg4)
+
+[Redux version live website](https://odin-react-shoppingcart.netlify.app/)
+
 ## The Odin Project: Lesson Shopping Cart
 
 This project is build according to the specification of the [Shopping Cart lesson](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
@@ -11,10 +19,6 @@ This project is build according to the specification of the [Shopping Cart lesso
 Access the <a href='https://main--odin-react-shoppingcart.netlify.app/'>Shopping Cart</a>
 
 ![Shopping cart page](./Shopping-cart-display.png "Clothing items in the shop")
-
-## Redux version
-
-Check out the [redux branch](https://github.com/Gohan61/shopping-cart/tree/redux) which uses Redux Toolkit to manage state and Tailwind CSS for styling. You can also access a demonstration video of the 
 
 ## Run locally
 
