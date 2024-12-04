@@ -12,6 +12,10 @@ Access the <a href='https://main--odin-react-shoppingcart.netlify.app/'>Shopping
 
 ![Shopping cart page](./Shopping-cart-display.png "Clothing items in the shop")
 
+## Redux version
+
+Check out the [redux branch](https://github.com/Gohan61/shopping-cart/tree/redux) which uses Redux Toolkit to manage state and Tailwind CSS for styling. You can also access a demonstration video of the 
+
 ## Run locally
 
 *In order to run project locally NodeJS + Git needs to installed on your system*
