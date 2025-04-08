@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <>
-      <main className="w-[300px] md:w-[450px] bg-white px-5 shadow-md pt-3 h-fit mt-2">
+      <main className="w-[300px] md:w-[450px] bg-white px-5 py-10 shadow-md pt-3 mt-auto mb-auto">
         <h1 className="text-center text-2xl font-bold mb-5">
           Welcome to the Fake Store
         </h1>
@@ -34,7 +34,7 @@ export default function HomePage() {
           </p>
         </section>
       </main>
-      <footer className="w-full bg-slate-200 shadow-sm flex items-center md:items-start md:justify-center gap-20 pt-4 flex-col flex-wrap md:flex-row md:flex-nowrap mt-3">
+      <footer className="w-full bg-slate-200 shadow-sm flex items-center md:items-start md:justify-center gap-20 pt-4 flex-col flex-wrap md:flex-row md:flex-nowrap mt-4 md:mt-5 lg-mt-0">
         <section className="w-[200px] h-fit">
           <h3 className="font-bold mb-2">Contact details</h3>
           <p>
