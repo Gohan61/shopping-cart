@@ -7,7 +7,7 @@ import addCartIcon from "../assets/add_shopping_cart.png";
 import { expandCollapse } from "../features/textCollapse/textSlice";
 
 export default function SingleProduct({ props }: { props: SingleProductType }) {
-  const [inputAmount, setInputAmount] = useState(0);
+  const [inputAmount, setInputAmount] = useState<number | string>("");
   const dispatch = useDispatch<AppDispatch>();
   const descriptionCollapsed = useSelector(
     (state: { description: { [key: string]: { collapsed: boolean } } }) =>
@@ -66,15 +66,20 @@ export default function SingleProduct({ props }: { props: SingleProductType }) {
             id={props.id.toString()}
             value={inputAmount}
             min={0}
-            onChange={(e) => setInputAmount(Number(e.target.value))}
+            onChange={(e) => {
+              const value = Math.max(0, parseInt(e.target.value));
+              setInputAmount(value);
+            }}
           />
         </div>
         <button
           className="bg-red-800 text-white rounded px-2 h-[30px] font-bold text-xs md:text-base hover:bg-red-950"
           onClick={async () => {
-            dispatch(addAmount({ inputAmount, id: props.id }));
-            setInputAmount(0);
-            dispatch(fetchProduct({ id: props.id }));
+            if (typeof inputAmount == "number" && inputAmount !== 0) {
+              dispatch(addAmount({ inputAmount, id: props.id }));
+              setInputAmount("");
+              dispatch(fetchProduct({ id: props.id }));
+            }
           }}
         >
           <img
