@@ -1,13 +1,26 @@
 import { useState } from "react";
 import { SingleProductType } from "../types/storeTypes";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAmount, fetchProduct } from "../features/shoppingCart/cartSlice";
 import { AppDispatch } from "../app/store";
 import addCartIcon from "../assets/add_shopping_cart.png";
+import { expandCollapse } from "../features/textCollapse/textSlice";
 
 export default function SingleProduct({ props }: { props: SingleProductType }) {
   const [inputAmount, setInputAmount] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
+  const descriptionCollapsed = useSelector(
+    (state: { description: { [key: string]: { collapsed: boolean } } }) =>
+      state.description[props.id.toString()]
+  );
+
+  function truncateAtWord(text: string, maxChars: number): string {
+    if (text.length <= maxChars) return text;
+
+    const truncated = text.slice(0, maxChars);
+    const lastSpaceIndex = truncated.lastIndexOf(" ");
+    return truncated.slice(0, lastSpaceIndex) + "...";
+  }
 
   return (
     <div className="flex flex-col w-80 md:w-96 p-3 hover:shadow-lg rounded-sm border-b border-blue-950">
@@ -17,13 +30,29 @@ export default function SingleProduct({ props }: { props: SingleProductType }) {
         </h4>
         <p className="text-red-700 font-semibold">€ {props.price}</p>
       </div>
-      <div className="my-2 p-1 border-2 rounded border-zinc-600 bg-slate-300">
+      <div className="my-2 p-1">
         <img
           src={props.image}
           alt=""
           className="w-16 md:w-32 object-contain float-left mr-2 mb-1"
         />
-        <p className="pl-2 text-sm">{props.description}</p>
+        <p className="pl-2 text-sm">
+          {descriptionCollapsed
+            ? props.description
+            : truncateAtWord(props.description, 30)}
+        </p>
+        <button
+          onClick={() =>
+            dispatch(
+              expandCollapse({
+                id: props.id.toString(),
+                collapse: !descriptionCollapsed,
+              })
+            )
+          }
+        >
+          {descriptionCollapsed ? "Collapse" : "Expand"}
+        </button>
       </div>
       <div className="flex mt-auto justify-end gap-2 items-end">
         <div className="flex flex-col ">

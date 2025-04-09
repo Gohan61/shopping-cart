@@ -42,3 +42,7 @@ export type categoryState = {
 };
 
 export type categoriesType = string[];
+
+export interface CollapseState {
+  [key: string]: boolean;
+}
