@@ -38,11 +38,11 @@ export default function Paginator({
   const dispatch = useDispatch();
 
   return (
-    <div className="flex justify-center gap-2">
+    <div className="flex justify-center gap-2 mt-4">
       {pageNumbers.map((page) => {
         return (
           <button
-            className={`text-lg border-2 p-1 border-gray-500 ${
+            className={`text-lg border-2 rounded-md p-1 border-gray-500 ${
               page === currentPageNr ? "bg-green-950 text-white" : ""
             }`}
             key={page}
