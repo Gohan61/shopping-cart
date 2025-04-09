@@ -49,21 +49,21 @@ export default function Navbar({
   });
 
   return (
-    <nav className="w-full flex justify-around items-center border-b-2 shadow-md relative h-fit lg:px-[calc((100vw-80rem)/2)] mb-4 md:mb-5 lg-mb-0">
+    <nav className="w-full flex justify-around items-center shadow-md shadow-cyan-900 relative h-fit lg:px-[calc((100vw-80rem)/2)] mb-4 md:mb-5 lg-mb-0 bg-blue-900">
       <h1>
         <button
           onClick={() => setShowHomePage(true)}
-          className="border-2 px-2 rounded-md bg-cyan-700 text-white font-bold text-xs md:text-base"
+          className="px-2 rounded-md text-xs text-white font-bold md:text-base mt-1 sm:mt-0"
         >
           Fake Store
         </button>
       </h1>
-      <div className="flex justify-between items-center gap-6 p-1 overflow-auto whitespace-nowrap ">
+      <div className="flex items-center p-1 overflow-auto whitespace-nowrap divide-dashed divide-blue-400 divide-x">
         {loading
           ? "Loading"
           : categories.map((category) => (
               <button
-                className="rounded px-2 h-fit font-bold text-xs md:text-base hover:bg-gray-700 border-b-2 border-blue-900 text-gray-900"
+                className="px-4 mt-auto font-bold text-xs md:text-sm hover:bg-gray-700 text-white"
                 key={category}
                 onClick={() => {
                   dispatch(setCategory({ category: category }));
@@ -88,7 +88,7 @@ export default function Navbar({
               </button>
             ))}
         <button
-          className="bg-cyan-800 rounded px-2 py-1 sm:py-0 text-white font-bold text-xs md:text-base hover:bg-gray-700"
+          className="px-4 text-white font-bold text-xs md:text-xs hover:bg-gray-700"
           onClick={() => {
             dispatch(setCategory({ category: "All" }));
             dispatch(fetchSingleCategory({ category: "All" })).then((res) => {
