@@ -2,27 +2,33 @@
 
 This project uses React to build a shopping cart. The items in the shop are retrieved via the [FakeStore API](https://fakestoreapi.com/). The project is tested with the React Testing Library.
 
-## Redux version
-
-Check out the [redux branch](https://github.com/Gohan61/shopping-cart/tree/redux) which uses Redux Toolkit to manage state and Tailwind CSS for styling.
-
-[Redux version demonstration video](https://youtu.be/S40lVqBZTg4)
-
-[Redux version live website](https://odin-react-shoppingcart.netlify.app/)
+<details>
+<summary>V1</summary>
 
 ## The Odin Project: Lesson Shopping Cart
 
 This project is build according to the specification of the [Shopping Cart lesson](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
 
-## Live website
-
-Access the <a href='https://main--odin-react-shoppingcart.netlify.app/'>Shopping Cart</a>
+[Live website](https://main--odin-react-shoppingcart.netlify.app/)
 
 ![Shopping cart page](./Shopping-cart-display.png "Clothing items in the shop")
+</details>
+
+<details open>
+<summary>V2</summary>
+
+## Redux version
+
+Check out the [redux branch](https://github.com/Gohan61/shopping-cart/tree/redux) which uses Redux Toolkit to manage state and Tailwind CSS for styling.
+
+[Live website](https://odin-react-shoppingcart.netlify.app/)
+
+![Shopping cart page Redux](./redux-screenshot.png)
+</details>
 
 ## Run locally
 
-*In order to run project locally NodeJS + Git needs to installed on your system*
+### In order to run project locally NodeJS + Git needs to installed on your system
 
 Follow these steps on Mac/Linux/WSL to run the project locally:
 
