@@ -42,6 +42,7 @@ export default function SingleProduct({ props }: { props: SingleProductType }) {
             : truncateAtWord(props.description, 30)}
         </p>
         <button
+          className="text-[0.3rem] sm:text-xs italic text-gray-950 border-2 border-dotted rounded-md px-1 hover:bg-gray-700 hover:text-white"
           onClick={() =>
             dispatch(
               expandCollapse({
