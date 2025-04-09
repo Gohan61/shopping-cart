@@ -63,7 +63,7 @@ export default function AllProducts({
   return (
     <>
       <div className="w-full flex flex-col p-1">
-        <div className="lg:pl-[calc((100vw-90rem)/2)]">
+        <div className="lg:pl-[calc((100vw-90rem)/2)] ml-2 xl:ml-0">
           <h1 className="font-bold text-xl">
             {productFetch.currentCategory} products
           </h1>
