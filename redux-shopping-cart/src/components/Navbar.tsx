@@ -10,7 +10,6 @@ import { AppDispatch } from "../app/store";
 import { currentPage } from "../features/paginator/pageSlice";
 import store from "../app/store";
 import cartIcon from "../assets/shopping_cart.png";
-import { fakeBaseQuery } from "@reduxjs/toolkit/query";
 
 export default function Navbar({
   setSortProduct,
