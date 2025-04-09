@@ -22,12 +22,12 @@ export default function ShoppingCart({
   return (
     <div
       ref={displayCartRef}
-      className="absolute p-2 bg-white w-52 right-2 top-11 border-2 md:top-16 lg:top-12 xl:right-[calc((100vw-80rem)/2)] rounded border-double border-orange-500"
+      className="absolute p-2 bg-white w-52 right-2 top-11 border-2 md:top-16 lg:top-12 xl:right-[calc((100vw-80rem)/2)] rounded border-double border-red-800 shadow-md shadow-red-800 divide-y divide-gray-200"
     >
       {Object.keys(productsInCart).map((product: string) => {
         const productId = Number(product);
         return (
-          <div key={product}>
+          <div key={product} className="mb-2">
             <h3 className="font-semibold mb-2">
               {productsInCart[productId].title}
             </h3>
@@ -40,7 +40,7 @@ export default function ShoppingCart({
               {productsInCart[productId].totalPrice}
             </p>
             <button
-              className="border-2 border-gray-500 bg-green-500 rounded w-6 text-white font-bold"
+              className="border-2 border-green-500 bg-green-500 rounded w-6 text-white font-bold"
               onClick={() => {
                 dispatch(addAmount({ id: productId, inputAmount: 1 }));
                 dispatch(fetchProduct({ id: productId }));
@@ -49,7 +49,7 @@ export default function ShoppingCart({
               +
             </button>
             <button
-              className="border-2 border-gray-500 bg-red-500 rounded w-6 text-white font-bold ml-2"
+              className="border-2 border-red-500 bg-red-500 rounded w-6 text-white font-bold ml-2"
               onClick={() => {
                 dispatch(reduceAmount({ id: productId }));
                 dispatch(fetchProduct({ id: productId }));
@@ -58,7 +58,7 @@ export default function ShoppingCart({
               -
             </button>
             <button
-              className="border-2 border-gray-500 bg-red-800 rounded ml-6 px-1 text-white font-bold"
+              className="border-2 border-red-800 bg-red-800 rounded ml-6 px-1 text-white font-bold"
               onClick={() => dispatch(removeFromCart({ id: productId }))}
             >
               Remove
