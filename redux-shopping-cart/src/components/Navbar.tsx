@@ -10,6 +10,7 @@ import { AppDispatch } from "../app/store";
 import { currentPage } from "../features/paginator/pageSlice";
 import store from "../app/store";
 import cartIcon from "../assets/shopping_cart.png";
+import { fakeBaseQuery } from "@reduxjs/toolkit/query";
 
 export default function Navbar({
   setSortProduct,
@@ -31,20 +32,28 @@ export default function Navbar({
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent): void {
-      if (
-        displayCartRef.current &&
-        !displayCartRef.current.contains(event.target as Node)
-      ) {
-        setDisplayCart(false);
-      }
+  function handleShoppingCartDisplay(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+
+    if (target && target.id === "shoppingCartIcon") {
+      setDisplayCart(!displayCart);
+      return;
     }
+
+    if (
+      displayCartRef.current &&
+      !displayCartRef.current.contains(event.target as Node)
+    ) {
+      setDisplayCart(false);
+    }
+  }
+
+  useEffect(() => {
     // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleShoppingCartDisplay);
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleShoppingCartDisplay);
     };
   });
 
@@ -109,15 +118,13 @@ export default function Navbar({
           All products
         </button>
       </div>
-      <button
-        className="bg-red-800 text-white rounded px-1 py-1 mr-[2px] h-fit font-bold text-xs md:text-base hover:bg-red-950"
-        onClick={() => setDisplayCart(!displayCart)}
-      >
+      <button className="bg-red-800 text-white rounded mr-[4px] h-fit font-bold hover:bg-red-950">
         <img
           src={cartIcon}
           alt=""
           width="21px"
-          className="w-[40px] sm:w-[21px]"
+          id="shoppingCartIcon"
+          className="w-[50px] sm:w-[25px] p-[2px]"
         />
       </button>
       {displayCart ? (
