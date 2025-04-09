@@ -118,7 +118,10 @@ export default function Navbar({
           All products
         </button>
       </div>
-      <button className="bg-red-800 text-white rounded mr-[4px] h-fit font-bold hover:bg-red-950">
+      <button
+        className="bg-red-800 text-white rounded mr-[4px] h-fit font-bold hover:bg-red-950"
+        aria-label="shopping cart"
+      >
         <img
           src={cartIcon}
           alt=""
